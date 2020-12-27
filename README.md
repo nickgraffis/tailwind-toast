@@ -118,3 +118,23 @@ default() //changes no default styling
 "shape", -> square (rounded) or pill (rounded-full)
 "speed" -> the speed the toast will appear and disappear (75, 100, 150, 200, 300, 500, 700, 1000)
 ```
+
+### Adding custom modules
+In your `twtoast.config.js` file you can add custom modules. Make sure to `return this`
+```javascript
+{
+  //default values
+  modules: [
+    myModule: (title, message) => {
+      this.color = 'indigo'
+      this.tone = 200
+      this.fontColor = 'indigo'
+      this.fontTone = 800
+      this.shape = 'pill'
+      this.postionY = 'top'
+      this.positionX = 'start'
+      return this
+    }
+  ]
+}
+```
