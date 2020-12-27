@@ -1,0 +1,10 @@
+<div class="twsnackbar mx-4 text-${this.font}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 bg-${this.color}-${this.tone} flex items-center justify-center">
+  <span class="text-xl inline-block mr-5">
+    <i class="${this.icon}"></i>
+  </span>
+  <span class="inline-block mr-8">
+    <b class="title">${this.title}</b> ${this.message}
+  </span>
+  <div id="buttons" class="flex justify-center items-center">
+  </div>
+</div>

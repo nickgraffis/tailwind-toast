@@ -8,5 +8,6 @@
   "fontColor",
   "fontTone",
   "tone",
-  "shape"
+  "shape",
+  "speed"
 ]

@@ -1,4 +1,7 @@
 module.exports = {
+  positionX: 'end',
+  positionY: 'bottom',
+  speed: 1000,
   methods: [
     {
       purple: function (title, message) {

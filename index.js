@@ -1,8 +1,12 @@
-const { toast } = require('./twtoast.js')
+const { toast, snackbar } = require('./twtoast.js')
 
 setTimeout(() => {
-  toast()
+  let snackBar = snackbar()
+  snackBar
   .purple('Purple!', 'This is a danger message! Watch out!')
-  .for(2000)
+  .addButtons(
+    { retry: () => alert('Works!') },
+    { ok: () => snackBar.hide() }
+  )
   .show()
 }, 3000)
