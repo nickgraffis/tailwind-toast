@@ -1,29 +1,34 @@
 const h = require('../utils/helpers')
 const options = require('../utils/options.json')
+const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'zero', 'ten', 'eleven']
 
 class Toast {
-  constructor () {
+  constructor(color, icon, duration, positionX, positionY, fontColor, fontTone, tone, shape, speed) {
+    this.color = color,
+    this.icon = icon,
+    this.duration = duration,
+    this.positionX = positionX,
+    this.positionY = positionY,
+    this.fontColor = fontColor,
+    this.fontTone = fontTone,
+    this.tone = tone,
+    this.shape = shape,
+    this.speed = speed,
+    this.buttons = [],
     this.html,
-    this.color,
+    this.id,
     this.title,
-    this.message,
-    this.icon = 'fas fa-bell',
-    this.duration = 3000,
-    this.position = 'top',
-    this.fontColor = 'gray',
-    this.fontTone = 100
-    this.tone = '500',
-    this.shape = 'square',
-    this.options = options
+    this.message
   }
 
-  for(ms) {
+  for (ms) {
     this.time = ms
     return this
   }
 
-from(position) {
-    this.position = position
+  from(positionY, positionX = this.positionX) {
+    this.positionX = positionX
+    this.postionY = positionY
     return this
   }
 
@@ -37,7 +42,7 @@ from(position) {
     return this
   }
 
-danger(title, message) {
+  danger(title, message) {
     this.title = title
     this.message = message
     this.color = 'red'
@@ -46,15 +51,15 @@ danger(title, message) {
     return this
   }
 
-success(title, message) {
+  success(title, message) {
     this.title = title
     this.message = message
     this.color = 'green'
-    this.font = 'white'
+    this.fontColor = 'gray'
     return this
   }
 
-warning(title, message) {
+  warning(title, message) {
     this.title = title
     this.message = message
     this.color = 'yellow'
@@ -62,32 +67,22 @@ warning(title, message) {
     return this
   }
 
-custom(title, message, color, font) {
-
-  }
-
-show() {
-    let toast = this
-    this.shape = toast.shape === 'pill' ? 'rounded-full' : 'rounded'
-    this.html = eval('`' + h.getFile('./templates/toast.toast') + '`')
+  show() {
+    this.shape = this.shape === 'pill' ? 'rounded-full' : 'rounded'
     let wrapper = document.createElement('DIV')
-    wrapper.classList = `absolute ease-in-out transform duration-500 -${this.position}-24 flex justify-center w-full`
-    wrapper.innerHTML = this.html
-    let id = `tawilwind-toast`
-    wrapper.id = id
+    wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.postionX} w-full`
+    wrapper.innerHTML = eval('`' + h.getFile('./templates/toast.toast') + '`')
+    this.id = `tawilwind-toast-${numbers[Math.floor(Math.random() * Math.floor(11))]}`
+    wrapper.id = this.id
     document.body.prepend(wrapper)
     setTimeout(() => {
-      document.querySelector("#" + id)
-      .classList
-      .add(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
+      let toast = document.querySelector("#" + this.id)
+      toast.classList.add(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
     }, 1)
     setTimeout(() => {
-      document.querySelector("#" + id)
-      .classList
-      .remove(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
-      document.querySelector("#" + id)
-      .classList
-      .add(`${this.position === 'top' ? '-translate-y-36' : 'translate-y-36'}`)
+      let toast = document.querySelector("#" + this.id)
+      toast.classList.remove(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
+      toast.classList.add(`${this.position === 'top' ? '-translate-y-36' : 'translate-y-36'}`)
     }, this.duration)
   }
 }

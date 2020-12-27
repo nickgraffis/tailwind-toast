@@ -83,7 +83,7 @@ class Snackbar {
     let wrapper = document.createElement('DIV')
     wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`
     wrapper.innerHTML = eval('`' + h.getFile('./templates/snackbar.toast') + '`')
-    this.id = `tawilwind-toast-${numbers[Math.floor(Math.random() * Math.floor(11))]}`
+    this.id = `tawilwind-snackbar-${numbers[Math.floor(Math.random() * Math.floor(11))]}`
     wrapper.id = this.id
     let buttonWrapper = wrapper.querySelector('.twsnackbar').querySelector('#buttons')
     this.buttons.forEach((button) => {

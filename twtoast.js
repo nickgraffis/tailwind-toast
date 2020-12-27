@@ -9,7 +9,18 @@ config.methods.forEach((method) => {
 
 module.exports = {
   toast: () => {
-    return new Toast()
+    return new Toast(
+      config.color ? config.color : 'blue',
+      config.icon ? config.icon : 'fas fa-bell',
+      config.duration ? config.duration : 3000,
+      config.positionX ? config.positionX : 'center',
+      config.positionY ? config.positionY : 'top',
+      config.fontColor ? config.fontColor : 'grey',
+      config.fontTone ? config.fontTone : 100,
+      config.tone ? config.tone : 500,
+      config.shape ? config.shape : 'square',
+      config.speed ? config.speed : 200
+    )
   },
 
   snackbar: () => {
