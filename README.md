@@ -24,10 +24,15 @@ toast().default('Title', 'Message!').show()
 ```
 There are some quick commands to help specify some major parts of your toast
 
-`for(ms) //specify how long the toast will be displayed, in miliseconds`
-```from(positionY, positionX) //specify the location
+```javascript
+for(ms) //specify how long the toast will be displayed, in miliseconds
+```
+```javascript
+from(positionY, positionX) //specify the location
 //Y only is ok
 //Y options are 'top' and 'bottom'
 //X options are 'start' and 'end'
 ```
-`with(parameters) //a catch all to change any setting {setting: value}`
+```javascript
+with(parameters) //a catch all to change any setting {setting: value}
+```
