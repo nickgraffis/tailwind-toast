@@ -1,0 +1,28 @@
+{
+  "name": "tailwind-toast",
+  "version": "1.0.0",
+  "description": "Awesome, fun, easy tailwind css based alerts and notifications 🍞",
+  "main": "twtoast.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickgraffis/tailwind-toast.git"
+  },
+  "keywords": [
+    "tailwind",
+    "toast",
+    "snackbar",
+    "notifications",
+    "js",
+    "javascript",
+    "css"
+  ],
+  "author": "Nick Graffis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickgraffis/tailwind-toast/issues"
+  },
+  "homepage": "https://github.com/nickgraffis/tailwind-toast#readme"
+}
