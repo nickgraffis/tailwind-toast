@@ -1,11 +1,13 @@
-const config = require('./twtoastconfig.js')
+const config = require('./twtoast.config.js')
 const Toast = require('./classes/Toast')
 const Snackbar = require('./classes/Snackbar')
 
-config.methods.forEach((method) => {
-  eval('Toast.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
-  eval('Snackbar.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
-})
+if (config.methods) {
+  config.methods.forEach((method) => {
+    eval('Toast.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
+    eval('Snackbar.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
+  })
+}
 
 module.exports = {
   toast: () => {
@@ -19,7 +21,7 @@ module.exports = {
       config.fontTone ? config.fontTone : 100,
       config.tone ? config.tone : 500,
       config.shape ? config.shape : 'square',
-      config.speed ? config.speed : 200
+      config.speed ? config.speed : 500
     )
   },
 
@@ -34,7 +36,7 @@ module.exports = {
       config.fontTone ? config.fontTone : 100,
       config.tone ? config.tone : 500,
       config.shape ? config.shape : 'square',
-      config.speed ? config.speed : 200
+      config.speed ? config.speed : 500
     )
   }
 }

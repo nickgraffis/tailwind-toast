@@ -4,7 +4,7 @@ const options = require('../utils/options.json')
 const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'zero', 'ten', 'eleven']
 
 class Snackbar {
-  constructor(color, icon, duration, positionX, positionY, fontColor, fontTone, tone, shape, speed) {
+  constructor (color, icon, duration, positionX, positionY, fontColor, fontTone, tone, shape, speed) {
     this.color = color,
       this.icon = icon,
       this.duration = duration,
@@ -27,13 +27,13 @@ class Snackbar {
     return this
   }
 
-  from(positionY, positionX = this.positionX) {
+  from (positionY, positionX = this.positionX) {
     this.positionX = positionX
     this.postionY = positionY
     return this
   }
 
-  with(params) {
+  with (params) {
     Object.keys(params).forEach((p) => {
       let object = params
       if (options.includes(p)) {
@@ -43,43 +43,54 @@ class Snackbar {
     return this
   }
 
-  danger(title, message) {
+  default (title, message) {
+    this.title = title
+    this.message = message
+    return this
+  }
+
+  danger (title, message) {
     this.title = title
     this.message = message
     this.color = 'red'
-    this.font = 'gray'
-    this.icon = 'fas fa-bell'
+    this.fontColor = 'gray'
+    this.icon = 'fas fa-hand-paper'
     return this
   }
 
-  success(title, message) {
+  success (title, message) {
     this.title = title
     this.message = message
     this.color = 'green'
-    this.font = 'gray'
+    this.fontColor = 'gray'
+    this.icon = 'fas fa-check'
     return this
   }
 
-  warning(title, message) {
+  warning (title, message) {
     this.title = title
     this.message = message
     this.color = 'yellow'
-    this.font = 'gray'
+    this.fontColor = 'gray'
+    this.icon = 'fas fa-exclamation-triangle'
     return this
   }
 
-  addButtons(...buttonObjects) {
+  addButtons (...buttonObjects) {
     this.buttons = buttonObjects
     return this
   }
 
-  hide() {
+  hide () {
     let snackbar = document.querySelector("#" + this.id)
     snackbar.classList.remove(`${this.positionY === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
     snackbar.classList.add(`${this.positionY === 'top' ? '-translate-y-36' : 'translate-y-36'}`)
+    setTimeout(() => {
+      snackbar.remove()
+    }, (this.speed + 100))
   }
 
-  show() {
+  show () {
     this.shape = this.shape === 'pill' ? 'rounded-full' : 'rounded'
     let wrapper = document.createElement('DIV')
     wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`
@@ -111,36 +122,36 @@ const options = require('../utils/options.json')
 const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'zero', 'ten', 'eleven']
 
 class Toast {
-  constructor(color, icon, duration, positionX, positionY, fontColor, fontTone, tone, shape, speed) {
+  constructor (color, icon, duration, positionX, positionY, fontColor, fontTone, tone, shape, speed) {
     this.color = color,
-      this.icon = icon,
-      this.duration = duration,
-      this.positionX = positionX,
-      this.positionY = positionY,
-      this.fontColor = fontColor,
-      this.fontTone = fontTone,
-      this.tone = tone,
-      this.shape = shape,
-      this.speed = speed,
-      this.buttons = [],
-      this.html,
-      this.id,
-      this.title,
-      this.message
+    this.icon = icon,
+    this.duration = duration,
+    this.positionX = positionX,
+    this.positionY = positionY,
+    this.fontColor = fontColor,
+    this.fontTone = fontTone,
+    this.tone = tone,
+    this.shape = shape,
+    this.speed = speed,
+    this.buttons = [],
+    this.html,
+    this.id,
+    this.title,
+    this.message
   }
 
-  for(ms) {
+  for (ms) {
     this.time = ms
     return this
   }
 
-  from(positionY, positionX = this.positionX) {
+  from (positionY, positionX = this.positionX) {
     this.positionX = positionX
     this.postionY = positionY
     return this
   }
 
-  with(params) {
+  with (params) {
     Object.keys(params).forEach((p) => {
       let object = params
       if (this.options.includes(p)) {
@@ -150,48 +161,59 @@ class Toast {
     return this
   }
 
-danger(title, message) {
+  default (title, message) {
     this.title = title
     this.message = message
-    this.color = 'red'
-    this.font = 'white'
-    this.icon = 'fas fa-bell'
     return this
   }
 
-success(title, message) {
+  danger (title, message) {
+    this.title = title
+    this.message = message
+    this.color = 'red'
+    this.fontColor = 'gray'
+    this.icon = 'fas fa-hand-paper'
+    return this
+  }
+
+  success (title, message) {
     this.title = title
     this.message = message
     this.color = 'green'
     this.fontColor = 'gray'
+    this.icon = 'fas fa-check'
     return this
   }
 
-warning(title, message) {
+  warning (title, message) {
     this.title = title
     this.message = message
     this.color = 'yellow'
-    this.font = 'white'
+    this.fontColor = 'gray'
+    this.icon = 'fas fa-exclamation-triangle'
     return this
   }
 
-show() {
-  this.shape = this.shape === 'pill' ? 'rounded-full' : 'rounded'
+  show () {
+    this.shape = this.shape === 'pill' ? 'rounded-full' : 'rounded'
     let wrapper = document.createElement('DIV')
-    wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.postionX} w-full`
+    wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`
     wrapper.innerHTML = eval('`' + h.getFile('./templates/toast.toast') + '`')
     this.id = `tawilwind-toast-${numbers[Math.floor(Math.random() * Math.floor(11))]}`
     wrapper.id = this.id
     document.body.prepend(wrapper)
+    let toast = document.querySelector("#" + this.id)
     setTimeout(() => {
-      let toast = document.querySelector("#" + this.id)
-      toast.classList.add(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
+      toast.classList.add(`${this.position === 'top' ? '-translate-y-36' : 'translate-y-36'}`)
     }, 1)
     setTimeout(() => {
       let toast = document.querySelector("#" + this.id)
-      toast.classList.remove(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
-      toast.classList.add(`${this.position === 'top' ? '-translate-y-36' : 'translate-y-36'}`)
+      toast.classList.remove(`${this.position === 'top' ? '-translate-y-36' : 'translate-y-36'}`)
+      toast.classList.add(`${this.position === 'top' ? 'translate-y-36' : '-translate-y-36'}`)
     }, this.duration)
+    setTimeout(() => {
+      toast.remove()
+    }, (this.duration + this.speed + 100))
   }
 }
 
@@ -200,29 +222,37 @@ module.exports = Toast
 },{"../utils/helpers":6,"../utils/options.json":7}],3:[function(require,module,exports){
 const { toast, snackbar } = require('./twtoast.js')
 
-setTimeout(() => {
   let snackBar = snackbar()
   snackBar
-  .purple('Purple!', 'This is a danger message! Watch out!')
+  .danger('Purple!', 'This is a danger message! Watch out!')
   .addButtons(
     { retry: () => alert('Works!') },
     { ok: () => {
       snackBar.hide()
-      toast().success('Great!', 'We did it!').show() 
+      toast().success('Great!', 'We did it!').show()
     }}
   )
   .show()
-}, 3000)
 
-},{"./twtoast.js":4}],4:[function(require,module,exports){
-const config = require('./twtoastconfig.js')
+},{"./twtoast.js":5}],4:[function(require,module,exports){
+{
+  //default values
+  modules: [
+    //custom modules
+  ]
+}
+
+},{}],5:[function(require,module,exports){
+const config = require('./twtoast.config.js')
 const Toast = require('./classes/Toast')
 const Snackbar = require('./classes/Snackbar')
 
-config.methods.forEach((method) => {
-  eval('Toast.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
-  eval('Snackbar.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
-})
+if (config.methods) {
+  config.methods.forEach((method) => {
+    eval('Toast.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
+    eval('Snackbar.prototype.' + Object.keys(method)[0] + ' = ' + Object.values(method))
+  })
+}
 
 module.exports = {
   toast: () => {
@@ -236,7 +266,7 @@ module.exports = {
       config.fontTone ? config.fontTone : 100,
       config.tone ? config.tone : 500,
       config.shape ? config.shape : 'square',
-      config.speed ? config.speed : 200
+      config.speed ? config.speed : 500
     )
   },
 
@@ -251,32 +281,12 @@ module.exports = {
       config.fontTone ? config.fontTone : 100,
       config.tone ? config.tone : 500,
       config.shape ? config.shape : 'square',
-      config.speed ? config.speed : 200
+      config.speed ? config.speed : 500
     )
   }
 }
 
-},{"./classes/Snackbar":1,"./classes/Toast":2,"./twtoastconfig.js":5}],5:[function(require,module,exports){
-module.exports = {
-  positionX: 'end',
-  positionY: 'bottom',
-  speed: 1000,
-  methods: [
-    {
-      purple: function (title, message) {
-        this.title = title
-        this.message = message
-        this.color = 'purple'
-        this.font = 'gray'
-        this.fontTone = '100'
-        this.icon = 'fas fa-bell'
-        return this
-      }
-    }
-  ]
-}
-
-},{}],6:[function(require,module,exports){
+},{"./classes/Snackbar":1,"./classes/Toast":2,"./twtoast.config.js":4}],6:[function(require,module,exports){
 function getFile(file) {
   var x = new XMLHttpRequest();
   x.open('GET', file, false);
