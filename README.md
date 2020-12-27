@@ -17,12 +17,13 @@ Here you can define your default values and create custom modules
 
 The fastest way to get started would be to require the package and call one
 of the default modules:
+
 ```javascript
 const { toast, snackbar } = require('tailwind-toast')
 
 toast().default('Title', 'Message!').show()
 ```
-There are some quick commands to help specify some major parts of your toast
+### There are some quick commands to help specify some major parts of your toast
 
 ```javascript
 show() //this does not return the object, but shows the toast or snackbar with the parameters
@@ -95,7 +96,7 @@ snackBar
 .show()
 ```
 
-The default modules are:
+### The default modules are:
 ```javascript
 danger() //red box with grey text and an hand icon
 success() //green box with grey text and a check mark icon
@@ -103,7 +104,7 @@ warning() //yellow box with grey text and a warning icon
 default() //changes no default styling
 ```
 
-Options:
+### Options
 ```javascript
 "color", -> the background color of the snackbar or toast (tailwind colors)
 "title", -> the title which is shown first in bold
