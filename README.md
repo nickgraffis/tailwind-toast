@@ -48,6 +48,8 @@ show() //this does not return the object, but shows the toast or snackbar with t
 ```javascript
 hide() //snackbar only, this helper can hide the snackbar as one of the button functions
 /* Example */
+const { toast, snackbar } = require('tailwind-toast')
+
 let snackBar = snackbar()
 snackBar
 .danger('Cookies!', 'This website uses cookies! Yum!')
@@ -69,6 +71,7 @@ default() //changes no default styling
 ```
 
 Options:
+```javascript
 "color", -> the background color of the snackbar or toast (tailwind colors)
 "title", -> the title which is shown first in bold
 "message", -> the message which is show second and not bold
@@ -80,3 +83,4 @@ Options:
 "tone", -> tailwind bg tone of the snackbar or toast (ie. bg-blue-"500")
 "shape", -> square (rounded) or pill (rounded-full)
 "speed" -> the speed the toast will appear and disappear (75, 100, 150, 200, 300, 500, 700, 1000)
+```
