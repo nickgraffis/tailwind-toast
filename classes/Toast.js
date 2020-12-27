@@ -21,6 +21,11 @@ class Toast {
     this.message
   }
 
+  as (shape) {
+    this.shape = shape
+    return this
+  }
+
   for (ms) {
     this.time = ms
     return this

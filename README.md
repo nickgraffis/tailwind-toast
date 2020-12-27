@@ -25,31 +25,64 @@ toast().default('Title', 'Message!').show()
 There are some quick commands to help specify some major parts of your toast
 
 ```javascript
-for(ms) //specify how long the toast will be displayed, in miliseconds
+show() //this does not return the object, but shows the toast or snackbar with the parameters
 ```
+
+```javascript
+for(ms) //specify how long the toast will be displayed, in miliseconds
+/* Example */
+toast().warning('Hey!', 'There was a minor error!').for(3000).show() //display for 3000ms
+```
+
+```javascript
+as(shape) //specify the shape of the toast or snackbar ('pill' or 'square')
+/* Example */
+toast().success('Great!', 'We saved it!').as('pill').show() //show pill shaped toast
+```
+
 ```javascript
 from(positionY, positionX) //specify the location
 //Y only is ok
 //Y options are 'top' and 'bottom'
 //X options are 'start', 'end', and 'center'
+/* Example */
+toast().default(null, 'Jocelyn just logged on!').from('bottom', 'end').show() //display toast at bottom right
 ```
 ```javascript
 with(parameters) //a catch all to change any setting {setting: value}
+/* Example */
+toast()
+.warning('Hey!', 'There was a minor error!')
+.with({
+  shape: 'pill',
+  duration: 4000,
+  speed: 1000,
+  positionX: 'end',
+  positionY: 'top',
+  color: 'blue',
+  tone: 800,
+  fontColor: 'blue',
+  fontTone: 200
+}).show() //display with all parameters
 ```
 
 ```javascript
 addButtons(buttons) //add buttons to snackbar {title: () => action}, {anotherTitle: () => action}
-```
-
-```javascript
-show() //this does not return the object, but shows the toast or snackbar with the parameters
+/* Example */
+snackBar()
+.danger('Hey!', 'You just deleted the message!')
+.addButtons(
+  { undo: () => {
+      undoDeleteMessage()
+    }
+  }
+)
+.show()
 ```
 
 ```javascript
 hide() //snackbar only, this helper can hide the snackbar as one of the button functions
 /* Example */
-const { toast, snackbar } = require('tailwind-toast')
-
 let snackBar = snackbar()
 snackBar
 .danger('Cookies!', 'This website uses cookies! Yum!')

@@ -20,6 +20,11 @@ class Snackbar {
       this.title,
       this.message
   }
+  
+  as (shape) {
+    this.shape = shape
+    return this
+  }
 
   for (ms) {
     this.duration = ms
