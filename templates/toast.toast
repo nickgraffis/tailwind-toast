@@ -1,0 +1,8 @@
+<div class="twtoast text-${toast.font}-${toast.fontTone} px-6 py-4 border-0 ${toast.shape} relative mb-4 bg-${toast.color}-${toast.tone}">
+  <span class="text-xl inline-block mr-5 align-middle">
+    <i class="${toast.icon}"></i>
+  </span>
+  <span class="inline-block align-middle mr-8">
+    <b class="title">${toast.title}</b> ${toast.message}
+  </span>
+</div>
