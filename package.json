@@ -1,6 +1,6 @@
 {
   "name": "tailwind-toast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Awesome, fun, easy tailwind css based alerts and notifications 🍞",
   "main": "twtoast.js",
   "scripts": {
