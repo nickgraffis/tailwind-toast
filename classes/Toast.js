@@ -40,7 +40,7 @@ class Toast {
   with (params) {
     Object.keys(params).forEach((p) => {
       let object = params
-      if (this.options.includes(p)) {
+      if (options.includes(p)) {
         eval('this.' + p + ' = ' + 'object.' + p)
       }
     })
