@@ -20,7 +20,7 @@ class Snackbar {
       this.title,
       this.message
   }
-  
+
   as (shape) {
     this.shape = shape
     return this
@@ -98,7 +98,7 @@ class Snackbar {
     this.shape = this.shape === 'pill' ? 'rounded-full' : 'rounded'
     let wrapper = document.createElement('DIV')
     wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`
-    wrapper.innerHTML = eval('`' + h.getFile('./templates/snackbar.toast') + '`')
+    wrapper.innerHTML = eval('`' + h.getFile('../templates/snackbar.toast') + '`')
     this.id = `tawilwind-snackbar-${numbers[Math.floor(Math.random() * Math.floor(11))]}`
     wrapper.id = this.id
     let buttonWrapper = wrapper.querySelector('.twsnackbar').querySelector('#buttons')
