@@ -84,7 +84,14 @@ class Toast {
     this.shape = this.shape === 'pill' ? 'rounded-full' : 'rounded'
     let wrapper = document.createElement('DIV')
     wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`
-    wrapper.innerHTML = eval('`' + h.getFile('./templates/toast.toast') + '`')
+    wrapper.innerHTML = `<div class="twthis mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 bg-${this.color}-${this.tone}">
+      <span class="text-xl inline-block mr-5 align-middle">
+        <i class="${this.icon}"></i>
+      </span>
+      <span class="inline-block align-middle mr-8">
+        <b class="title">${this.title}</b> ${this.message}
+      </span>
+    </div>`
     this.id = `tawilwind-toast-${numbers[Math.floor(Math.random() * Math.floor(11))]}`
     wrapper.id = this.id
     document.body.prepend(wrapper)
