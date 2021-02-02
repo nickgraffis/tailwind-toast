@@ -1,5 +1,7 @@
 # Tailwind Toast 🍞
 
+# FYI - Working on a pretty big update, same concept, v2 ETA Feb 14💖
+
 ## Usage
 You can pull the package in with `npm install tailwind-toast`!
 
