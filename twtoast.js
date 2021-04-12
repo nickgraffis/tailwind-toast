@@ -1,4 +1,4 @@
-const config = require.main.require('./twtoast.config.js')
+const config = require('./twtoast.config.js')
 const Toast = require('./classes/Toast')
 const Snackbar = require('./classes/Snackbar')
 
