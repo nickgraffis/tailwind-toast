@@ -1,3 +1,4 @@
+const { snackbar } = require("../twtoast");
 const h = require("../utils/helpers");
 const options = require("../utils/options.json");
 const numbers = [
@@ -56,8 +57,8 @@ class Snackbar {
   }
 
   from(positionY, positionX = this.positionX) {
+    this.positionY = positionY;
     this.positionX = positionX;
-    this.postionY = positionY;
     return this;
   }
 
@@ -125,7 +126,7 @@ class Snackbar {
   show() {
     this.shape = this.shape === "pill" ? "rounded-full" : "rounded";
     let wrapper = document.createElement("DIV");
-    wrapper.classList = `absolute ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`;
+    wrapper.classList = `z-10 fixed ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`;
     wrapper.innerHTML = `<div class="twsnackbar mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 bg-${this.color}-${this.tone} flex items-center justify-center">
               <span class="text-xl inline-block mr-5">
                 <i class="${this.icon}"></i>
@@ -155,6 +156,8 @@ class Snackbar {
       buttonWrapper.append(newButton);
     });
     document.body.prepend(wrapper);
+    let snackbar = document.querySelector("#" + this.id);
+    console.log(snackbar);
     setTimeout(() => {
       document
         .querySelector("#" + this.id)
@@ -162,6 +165,18 @@ class Snackbar {
           `${this.positionY === "top" ? "translate-y-36" : "-translate-y-36"}`
         );
     }, 1);
+    setTimeout(() => {
+      let snackbar = document.querySelector("#" + this.id);
+      snackbar.classList.remove(
+        `${this.positionY === "top" ? "-translate-y-36" : "translate-y-36"}`
+      );
+      snackbar.classList.add(
+        `${this.positionY === "top" ? "translate-y-36" : "-translate-y-36"}`
+      );
+    }, this.duration);
+    setTimeout(() => {
+      snackbar.remove();
+    }, this.duration + this.speed + 100);
   }
 }
 
