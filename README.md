@@ -62,8 +62,7 @@ toast()
   speed: 1000,
   positionX: 'end',
   positionY: 'top',
-  color: 'blue',
-  tone: 800,
+  color: 'bg-blue-800',
   fontColor: 'blue',
   fontTone: 200
 }).show() //display with all parameters
@@ -108,7 +107,7 @@ default() //changes no default styling
 
 ### Options
 ```javascript
-"color", -> the background color of the snackbar or toast (tailwind colors)
+"color", -> the background color of the snackbar or toast (tailwind colors) with the tone (ie. bg-blue-500)
 "title", -> the title which is shown first in bold
 "message", -> the message which is show second and not bold
 "icon", -> the icon on the far left
@@ -116,7 +115,6 @@ default() //changes no default styling
 "postion", -> positionY (top or bottom) and positionX (start, end, center)
 "fontColor", -> color of the font
 "fontTone", -> tailwind font tone (ie. text-blue-"500")
-"tone", -> tailwind bg tone of the snackbar or toast (ie. bg-blue-"500")
 "shape", -> square (rounded) or pill (rounded-full)
 "speed" -> the speed the toast will appear and disappear (75, 100, 150, 200, 300, 500, 700, 1000)
 ```
@@ -128,8 +126,7 @@ In your `twtoast.config.js` file you can add custom modules. Make sure to `retur
   //default values
   modules: [
     myModule: (title, message) => {
-      this.color = 'indigo'
-      this.tone = 200
+      this.color = 'bg-indigo-200'
       this.fontColor = 'indigo'
       this.fontTone = 800
       this.shape = 'pill'
