@@ -6,15 +6,15 @@ if (config.methods) {
   config.methods.forEach((method) => {
     eval(
       "Toast.prototype." +
-        Object.keys(method)[0] +
-        " = " +
-        Object.values(method)
+      Object.keys(method)[0] +
+      " = " +
+      Object.values(method)
     );
     eval(
       "Snackbar.prototype." +
-        Object.keys(method)[0] +
-        " = " +
-        Object.values(method)
+      Object.keys(method)[0] +
+      " = " +
+      Object.values(method)
     );
   });
 }
@@ -22,14 +22,13 @@ if (config.methods) {
 module.exports = {
   toast: () => {
     return new Toast(
-      config.color ? config.color : "blue",
+      config.color ? config.color : "blue-500",
       config.icon ? config.icon : "fas fa-bell",
       config.duration ? config.duration : 3000,
       config.positionX ? config.positionX : "center",
       config.positionY ? config.positionY : "top",
       config.fontColor ? config.fontColor : "grey",
       config.fontTone ? config.fontTone : 100,
-      config.tone ? config.tone : 500,
       config.shape ? config.shape : "square",
       config.speed ? config.speed : 500
     );
@@ -37,14 +36,13 @@ module.exports = {
 
   snackbar: () => {
     return new Snackbar(
-      config.color ? config.color : "blue",
+      config.color ? config.color : "blue-500",
       config.icon ? config.icon : "fas fa-bell",
       config.duration ? config.duration : 3000,
       config.positionX ? config.positionX : "center",
       config.positionY ? config.positionY : "top",
       config.fontColor ? config.fontColor : "grey",
       config.fontTone ? config.fontTone : 100,
-      config.tone ? config.tone : 500,
       config.shape ? config.shape : "square",
       config.speed ? config.speed : 500
     );
