@@ -25,7 +25,6 @@ class Snackbar {
     positionY,
     fontColor,
     fontTone,
-    tone,
     shape,
     speed
   ) {
@@ -36,7 +35,6 @@ class Snackbar {
       (this.positionY = positionY),
       (this.fontColor = fontColor),
       (this.fontTone = fontTone),
-      (this.tone = tone),
       (this.shape = shape),
       (this.speed = speed),
       (this.buttons = []),
@@ -127,7 +125,7 @@ class Snackbar {
     this.shape = this.shape === "pill" ? "rounded-full" : "rounded";
     let wrapper = document.createElement("DIV");
     wrapper.classList = `z-10 fixed ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`;
-    wrapper.innerHTML = `<div class="twsnackbar mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 bg-${this.color}-${this.tone} flex items-center justify-center">
+    wrapper.innerHTML = `<div class="twsnackbar mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 ${this.color} flex items-center justify-center">
               <span class="text-xl inline-block mr-5">
                 <i class="${this.icon}"></i>
               </span>
@@ -137,21 +135,17 @@ class Snackbar {
               <div id="buttons" class="flex justify-center items-center">
               </div>
             </div>`;
-    this.id = `tawilwind-snackbar-${
-      numbers[Math.floor(Math.random() * Math.floor(11))]
-    }`;
+    this.id = `tawilwind-snackbar-${numbers[Math.floor(Math.random() * Math.floor(11))]
+      }`;
     wrapper.id = this.id;
     let buttonWrapper = wrapper
       .querySelector(".twsnackbar")
       .querySelector("#buttons");
     this.buttons.forEach((button) => {
       let newButton = document.createElement("DIV");
-      newButton.classList = `cursor-pointer hover:bg-${this.color}-${
-        parseInt(this.tone) + 100
-      } p-2 rounded flex justify-center items-center`;
-      newButton.innerHTML = `<b class="uppercase"> ${
-        Object.keys(button)[0]
-      }</b>`;
+      newButton.classList = `cursor-pointer p-2 rounded flex justify-center items-center`;
+      newButton.innerHTML = `<b class="uppercase"> ${Object.keys(button)[0]
+        }</b>`;
       newButton.onclick = Object.values(button)[0];
       buttonWrapper.append(newButton);
     });

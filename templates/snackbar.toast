@@ -1,4 +1,4 @@
-<div class="twsnackbar mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 bg-${this.color}-${this.tone} flex items-center justify-center">
+<div class="twsnackbar mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 ${this.color} flex items-center justify-center">
   <span class="text-xl inline-block mr-5">
     <i class="${this.icon}"></i>
   </span>
