@@ -78,7 +78,7 @@ class Toast {
   danger(title, message) {
     this.title = title;
     this.message = message;
-    this.color = "red";
+    this.color = "bg-red-200";
     this.fontColor = "gray";
     this.icon = "fas fa-hand-paper";
     return this;
@@ -87,7 +87,7 @@ class Toast {
   success(title, message) {
     this.title = title;
     this.message = message;
-    this.color = "green";
+    this.color = "bg-green-200";
     this.fontColor = "gray";
     this.icon = "fas fa-check";
     return this;
@@ -96,7 +96,7 @@ class Toast {
   warning(title, message) {
     this.title = title;
     this.message = message;
-    this.color = "yellow";
+    this.color = "bg-yellow-200";
     this.fontColor = "gray";
     this.icon = "fas fa-exclamation-triangle";
     return this;

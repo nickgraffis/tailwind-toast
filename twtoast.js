@@ -22,7 +22,7 @@ if (config.methods) {
 module.exports = {
   toast: () => {
     return new Toast(
-      config.color ? config.color : "blue-500",
+      config.color ? config.color : "bg-blue-500",
       config.icon ? config.icon : "fas fa-bell",
       config.duration ? config.duration : 3000,
       config.positionX ? config.positionX : "center",
@@ -36,7 +36,7 @@ module.exports = {
 
   snackbar: () => {
     return new Snackbar(
-      config.color ? config.color : "blue-500",
+      config.color ? config.color : "bg-blue-500",
       config.icon ? config.icon : "fas fa-bell",
       config.duration ? config.duration : 3000,
       config.positionX ? config.positionX : "center",
