@@ -1,21 +1,6 @@
-const h = require("../utils/helpers");
-const options = require("../utils/options.json");
-const numbers = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "zero",
-    "ten",
-    "eleven",
-];
+import options from "../utils/options.json";
 
-class Toast {
+export class Toast {
     constructor(
         color,
         icon,
@@ -62,6 +47,7 @@ class Toast {
     with(params) {
         Object.keys(params).forEach((p) => {
             let object = params;
+            console.log(options);
             if (options.includes(p)) {
                 this[p] = object[p];
             }
@@ -111,10 +97,10 @@ class Toast {
             container_wrapper.innerHTML = '<div id="toasters-container"></div>';
             document.body.prepend(container_wrapper);
         }
-
-        this.id = `tawilwind-toast-${numbers[Math.floor(Math.random() * Math.floor(11))]}`;
+        let randomNumber = Math.floor(Math.random() * Date.now());
+        this.id = `tawilwind-toast-` + randomNumber;
         this.shape = this.shape === "pill" ? "rounded-full" : "rounded";
-        document.getElementById('toasters-container').insertAdjacentHTML('afterbegin', `<div id="${this.id}" class="twthis mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 ${this.shape} relative mb-4 ${this.color}">
+        document.getElementById('toasters-container').insertAdjacentHTML('afterbegin', `<div id="${this.id}" onclick="document.querySelector('#'+ this.id).remove()" class="twthis mx-4 text-${this.fontColor}-${this.fontTone} px-6 py-4 border-0 cursor-pointer ${this.shape} relative mb-4 ${this.color}">
       <span class="text-xl inline-block mr-5 align-middle">
         <i class="${this.icon}"></i>
       </span>
@@ -143,5 +129,3 @@ class Toast {
         }, this.duration + this.speed + 100);
     }
 }
-
-module.exports = Toast;
