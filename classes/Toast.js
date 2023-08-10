@@ -47,7 +47,6 @@ export class Toast {
     with(params) {
         Object.keys(params).forEach((p) => {
             let object = params;
-            console.log(options);
             if (options.includes(p)) {
                 this[p] = object[p];
             }
