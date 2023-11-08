@@ -92,7 +92,7 @@ export class Toast {
         if (!document.getElementById('toasters-container')) {
             let container_wrapper = document.createElement("DIV");
             container_wrapper.id = 'toasters-wrapper';
-            container_wrapper.classList = `z-50 fixed ease-in-out transform duration-${this.speed} -${this.positionY}-24 flex justify-${this.positionX} w-full`;
+            container_wrapper.classList = `z-50 fixed bottem-4 right-4 ease-in-out transform duration-${this.speed}`;
             container_wrapper.innerHTML = '<div id="toasters-container"></div>';
             document.body.prepend(container_wrapper);
         }
