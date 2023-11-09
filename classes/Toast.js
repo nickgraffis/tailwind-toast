@@ -92,7 +92,7 @@ export class Toast {
         if (!document.getElementById('toasters-container')) {
             let container_wrapper = document.createElement("DIV");
             container_wrapper.id = 'toasters-wrapper';
-            container_wrapper.classList = `z-50 fixed bottem-4 right-4 ease-in-out transform duration-${this.speed}`;
+            container_wrapper.classList = `z-50 fixed bottom-4 right-4 ease-in-out transform duration-${this.speed}`;
             container_wrapper.innerHTML = '<div id="toasters-container"></div>';
             document.body.prepend(container_wrapper);
         }
@@ -110,7 +110,7 @@ export class Toast {
         setTimeout(() => {
             let toast = document.getElementById('toasters-wrapper');
             toast.classList.add(
-                `${this.positionY === "top" ? "translate-y-36" : "-translate-y-36"}`
+                `${this.positionY === "top" ? "translate-y-36" : ""}`
             );
         }, 1);
         setTimeout(() => {
@@ -119,7 +119,7 @@ export class Toast {
                 `${this.positionY === "top" ? "-translate-y-36" : "translate-y-36"}`
             );
             toast.classList.add(
-                `${this.positionY === "top" ? "translate-y-36" : "-translate-y-36"}`
+                `${this.positionY === "top" ? "translate-y-36" : ""}`
             );
         }, this.duration);
         setTimeout(() => {
