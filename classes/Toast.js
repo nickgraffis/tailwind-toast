@@ -109,18 +109,18 @@ export class Toast {
     </div>`);
         setTimeout(() => {
             let toast = document.getElementById('toasters-wrapper');
-            toast.classList.add(
-                `${this.positionY === "top" ? "translate-y-36" : ""}`
-            );
+            if (this.positionY === "top") {
+                toast.classList.add("translate-y-36");
+            }
         }, 1);
         setTimeout(() => {
             let toast = document.getElementById('toasters-wrapper');
             toast.classList.remove(
                 `${this.positionY === "top" ? "-translate-y-36" : "translate-y-36"}`
             );
-            toast.classList.add(
-                `${this.positionY === "top" ? "translate-y-36" : ""}`
-            );
+            if (this.positionY === "top") {
+                toast.classList.add("translate-y-36");
+            }
         }, this.duration);
         setTimeout(() => {
             let toast = document.querySelector("#" + this.id);
