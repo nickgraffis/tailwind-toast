@@ -1,22 +1,6 @@
-const { snackbar } = require("../twtoast");
-const h = require("../utils/helpers");
-const options = require("../utils/options.json");
-const numbers = [
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-  "zero",
-  "ten",
-  "eleven",
-];
+import options from "../utils/options.json";
 
-class Snackbar {
+export class Snackbar {
   constructor(
     color,
     icon,
@@ -79,7 +63,7 @@ class Snackbar {
   danger(title, message) {
     this.title = title;
     this.message = message;
-    this.color = "red";
+    this.color = "bg-red-200";
     this.fontColor = "gray";
     this.icon = "fas fa-hand-paper";
     return this;
@@ -88,7 +72,7 @@ class Snackbar {
   success(title, message) {
     this.title = title;
     this.message = message;
-    this.color = "green";
+    this.color = "bg-green-200";
     this.fontColor = "gray";
     this.icon = "fas fa-check";
     return this;
@@ -97,7 +81,7 @@ class Snackbar {
   warning(title, message) {
     this.title = title;
     this.message = message;
-    this.color = "yellow";
+    this.color = "bg-yellow-200";
     this.fontColor = "gray";
     this.icon = "fas fa-exclamation-triangle";
     return this;
@@ -135,8 +119,8 @@ class Snackbar {
               <div id="buttons" class="flex justify-center items-center">
               </div>
             </div>`;
-    this.id = `tawilwind-snackbar-${numbers[Math.floor(Math.random() * Math.floor(11))]
-      }`;
+      let randomNumber = Math.floor(Math.random() * Date.now());
+    this.id = `tawilwind-snackbar-` + randomNumber;
     wrapper.id = this.id;
     let buttonWrapper = wrapper
       .querySelector(".twsnackbar")
@@ -173,5 +157,3 @@ class Snackbar {
     }, this.duration + this.speed + 100);
   }
 }
-
-module.exports = Snackbar;

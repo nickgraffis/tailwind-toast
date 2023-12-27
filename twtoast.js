@@ -1,28 +1,11 @@
-const config = require("./twtoast.config.js");
-const Toast = require("./classes/Toast");
-const Snackbar = require("./classes/Snackbar");
+const config = import('./twtoast.config');
+import {Toast} from "./classes/Toast";
+import {Snackbar} from "./classes/Snackbar";
 
-if (config.methods) {
-  config.methods.forEach((method) => {
-    eval(
-      "Toast.prototype." +
-      Object.keys(method)[0] +
-      " = " +
-      Object.values(method)
-    );
-    eval(
-      "Snackbar.prototype." +
-      Object.keys(method)[0] +
-      " = " +
-      Object.values(method)
-    );
-  });
-}
 
-module.exports = {
-  toast: () => {
+  const toast = () => {
     return new Toast(
-      config.color ? config.color : "blue-500",
+      config.color ? config.color : "bg-blue-500",
       config.icon ? config.icon : "fas fa-bell",
       config.duration ? config.duration : 3000,
       config.positionX ? config.positionX : "center",
@@ -32,11 +15,11 @@ module.exports = {
       config.shape ? config.shape : "square",
       config.speed ? config.speed : 500
     );
-  },
+  };
 
-  snackbar: () => {
+  const snackbar = () => {
     return new Snackbar(
-      config.color ? config.color : "blue-500",
+      config.color ? config.color : "bg-blue-500",
       config.icon ? config.icon : "fas fa-bell",
       config.duration ? config.duration : 3000,
       config.positionX ? config.positionX : "center",
@@ -46,5 +29,7 @@ module.exports = {
       config.shape ? config.shape : "square",
       config.speed ? config.speed : 500
     );
-  },
-};
+  };
+
+
+export {toast, snackbar}
